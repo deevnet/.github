@@ -1,53 +1,95 @@
-# Deevnet Infrastructure
+# **Deevnet Platform Architecture**  
+### *Deevnet — Defined in code. Delivered through automation.*
 
-**Deevnet** is a collection of infrastructure-as-code projects that define my home (dvnt) and mobile (dvntm) labs.  
-The goal: fully reproducible, automated environments using Terraform, Ansible, Packer, Vault, and MinIO.
+**Deevnet** is a unified platform architecture that applies modern Infrastructure-as-Code practices to both a **production home network** and an isolated **development lab environment**.  
+Using **Terraform, Ansible, Packer, Vault, and MinIO**, Deevnet enables automated, reproducible provisioning across physical machines, VMs, and single-board computers.
 
-- **Home lab (dvnt):** UniFi network, Proxmox cluster, Windows/NAS servers.  
-- **Mobile lab (dvntm):** two Proxmox servers, OPNsense firewall, admin Pi, and a Pi cluster.  
-- **Common code:** shared Ansible collections, Terraform modules, and Packer image builds.  
-- **Security:** HashiCorp Vault manages all secrets and PKI; MinIO provides S3-compatible Terraform state storage.
+The platform is structured as:
+
+- **dvnt — Production Environment**  
+  Stable, always-on home infrastructure running Proxmox, UniFi networking, Windows/NAS systems, and supporting Raspberry Pis. Treated as a production-grade environment.
+
+- **dvntm — Lab / Development Environment**  
+  A portable, self-contained infrastructure cluster used to experiment, prototype, test, and validate IaC changes before promoting them into production.
+
+Together, these environments form a complete platform for infrastructure engineering and long-term automation development.
+
+---
+
+## 🧭 What the Deevnet Platform Enables
+
+The Deevnet platform is more than infrastructure—it is a foundation for personal, professional, and creative growth. It enables:
+
+- **Professional development in modern infrastructure engineering**  
+  Hands-on experience with Terraform, Ansible, Packer, Vault, monitoring, PKI, and automated provisioning pipelines.
+
+- **A portable demo and teaching environment for meetups & workshops**  
+  The dvntm lab supports demonstrations of IaC workflows, Pi clusters, networking concepts, automation pipelines, and hardware/software integrations.
+
+- **A controlled sandbox for experimentation and R&D**  
+  Safely test new infrastructure patterns, network designs, OS images, and hardware integrations without impacting production services.
+
+- **A highly automated home environment**  
+  Automated provisioning of servers, Pis, network devices, monitoring components, and other home systems.
+
+- **A platform for reproducible hardware/software projects**  
+  Supporting Pi image factories, microcontrollers, CAD/PCB tooling, and OOB management solutions.
+
+- **A consistent Dev → Prod workflow across all devices**  
+  Build and validate in dvntm, refine the IaC modules, then promote reliably into dvnt.
+
+- **A personal engineering playground for curiosity-driven learning**  
+  Exploration of computing, networking, audio/digital systems, embedded hardware, and other technical domains.
+
+- **A unified structure for organizing long-term projects**  
+  Clear naming, version-controlled repositories, shared modules, and reproducible pipelines maintain order and sustainability over time.
 
 ---
 
 ## 📦 Public Repositories
 
-### Ansible Collections
-- [**ansible-collection-deevnet.common**](./ansible-collection-deevnet.common) – Baseline roles (admin tools, node_exporter, hardening, users).  
-- [**ansible-collection-deevnet.net**](./ansible-collection-deevnet.net) – Network helpers (OPNsense, UniFi, DNS).  
-- [**ansible-collection-deevnet.pi**](./ansible-collection-deevnet.pi) – Pi bootstrap, udev/FTDI, ser2net.  
+### **Ansible Collections**
+- **ansible-collection-deevnet.common** – Baseline system roles: admin tools, users, security hardening, exporters.  
+- **ansible-collection-deevnet.net** – Network automation: OPNsense, UniFi, DNS, interfaces, VLANs.  
+- **ansible-collection-deevnet.pi** – Raspberry Pi provisioning: device setup, udev/FTDI rules, ser2net, cluster initialization.  
 
-### Terraform Modules
-- [**tf-proxmox-vm**](./tf-proxmox-vm) – Proxmox VM lifecycle (cloud-init, VLANs, tags).  
-- [**tf-opnsense**](./tf-opnsense) – Firewall rules, VLANs, DHCP, NAT via OPNsense API.  
-- [**tf-unifi**](./tf-unifi) – UniFi controller automation (networks, SSIDs, switches).  
-- [**tf-dns-core**](./tf-dns-core) – DNS zones/records (`app.dev.deevnet.net` style).  
-- [**tf-minio-backend**](./tf-minio-backend) – S3-compatible Terraform state backend (writes keys to Vault).  
-- [**tf-vault-core**](./tf-vault-core) – Bootstraps Vault (auth, policies, KV, Transit).  
-- [**tf-vault-pki**](./tf-vault-pki) – PKI engine for short-lived TLS certs across services.  
+### **Terraform Modules**
+- **tf-proxmox-vm** – Declarative VM lifecycle automation (cloud-init, VLANs, tags).  
+- **tf-opnsense** – Firewall automation: interfaces, VLANs, DHCP, NAT, rules, aliases.  
+- **tf-unifi** – Automated UniFi configuration: SSIDs, networks, VLANs, switch profiles.  
+- **tf-dns-core** – DNS zone and record management (`service.env.deevnet.net`).  
+- **tf-minio-backend** – S3-compatible Terraform state backed by MinIO and secured via Vault.  
+- **tf-vault-core** – Vault bootstrap: auth methods, policies, KV engines, transit.  
+- **tf-vault-pki** – PKI automation: root/intermediate CAs, short-lived certificates.  
 
-### Image Factory
-- [**packer-pi-image-factory**](./packer-pi-image-factory) – Reproducible Pi/Linux images with baseline roles baked in.  
+### **Image Factory**
+- **packer-pi-image-factory** – Reproducible Pi and Linux image builds using Packer + Ansible, including baseline roles and customizable add-ons.
 
-### Samples / Docs
-- [**infra-sample**](./infra-sample) – Demonstrates end-to-end usage of modules and collections with dummy values.  
-- [**infra-ops**](./infra-ops) – Shared docs, runbooks, helper scripts.  
+### **Samples & Documentation**
+- **infra-sample** – Demonstrates end-to-end module usage with example values.  
+- **infra-ops** – Shared documentation, runbooks, diagrams, and helper scripts.
 
 ---
 
 ## 🔒 Private Repositories
 
-- `infra-dvnt` – Defines home lab stack (UniFi, Proxmox cluster, Windows/NAS).  
-- `infra-dvntm` – Defines mobile lab stack (Proxmox pair, OPNsense, Pi cluster).  
+- **infra-dvnt** – Full IaC definition for the production environment.  
+- **infra-dvntm** – Full IaC definition for the mobile development environment.
 
-Both use Vault for secrets and MinIO for Terraform state.  
+Both environments use **Vault** for secret management and **MinIO** for S3-compatible Terraform state storage.
 
 ---
 
-## 🧭 Vision
+## 🏁 Vision
 
-This ecosystem is meant to:
-- Provide reproducible, declarative infrastructure for both dvnt and dvntm labs.  
-- Demonstrate patterns (Terraform + Ansible + Packer + Vault) others can reuse.  
-- Serve as a playground for experimenting with secure, automated, cloud-like workflows at home.  
+Deevnet exists to:
+
+- Apply cloud engineering principles to real environments  
+- Provide a robust platform for developing and refining modern IaC skills  
+- Enable portable demonstrations, teaching, and community engagement  
+- Support reproducible hardware and software project workflows  
+- Maintain a stable, automated home environment through deterministic builds  
+- Encourage continuous learning, experimentation, and technical exploration  
+
+**Deevnet is an evolving automation platform—built in public, defined in code, and driven by curiosity.**
 

@@ -18,13 +18,13 @@ Together, these environments form a complete platform for infrastructure enginee
 
 ## 🧭 What the Deevnet Platform Enables
 
-The Deevnet platform is more than infrastructure—it is a foundation for personal, professional, and creative growth. It enables:
+The Deevnet platform serves as a foundation for personal, professional, and creative growth. It enables:
 
 - **Professional development in modern infrastructure engineering**  
   Hands-on experience with Terraform, Ansible, Packer, Vault, monitoring, PKI, and automated provisioning pipelines.
 
-- **A portable demo and teaching environment for meetups & workshops**  
-  The dvntm lab supports demonstrations of IaC workflows, Pi clusters, networking concepts, automation pipelines, and hardware/software integrations.
+- **A portable demo and teaching environment for Meetups & workshops**  
+  The dvntm lab supports on-site demonstrations of IaC workflows, Pi clusters, networking concepts, automation pipelines, and hardware/software integrations.
 
 - **A controlled sandbox for experimentation and R&D**  
   Safely test new infrastructure patterns, network designs, OS images, and hardware integrations without impacting production services.
@@ -51,19 +51,19 @@ The Deevnet platform is more than infrastructure—it is a foundation for person
 ### **Ansible Collections**
 - **ansible-collection-deevnet.common** – Baseline system roles: admin tools, users, security hardening, exporters.  
 - **ansible-collection-deevnet.net** – Network automation: OPNsense, UniFi, DNS, interfaces, VLANs.  
-- **ansible-collection-deevnet.pi** – Raspberry Pi provisioning: device setup, udev/FTDI rules, ser2net, cluster initialization.  
 
 ### **Terraform Modules**
 - **tf-proxmox-vm** – Declarative VM lifecycle automation (cloud-init, VLANs, tags).  
 - **tf-opnsense** – Firewall automation: interfaces, VLANs, DHCP, NAT, rules, aliases.  
-- **tf-unifi** – Automated UniFi configuration: SSIDs, networks, VLANs, switch profiles.  
+- **tf-unifi** – Automated UniFi configuration: SSIDs, networks, VLANs, switch profiles.
+- **tf-omada** – Automated TP-Link configuration: SSIDs, networks, VLANs, switch profiles. 
 - **tf-dns-core** – DNS zone and record management (`service.env.deevnet.net`).  
 - **tf-minio-backend** – S3-compatible Terraform state backed by MinIO and secured via Vault.  
 - **tf-vault-core** – Vault bootstrap: auth methods, policies, KV engines, transit.  
 - **tf-vault-pki** – PKI automation: root/intermediate CAs, short-lived certificates.  
 
 ### **Image Factory**
-- **packer-pi-image-factory** – Reproducible Pi and Linux image builds using Packer + Ansible, including baseline roles and customizable add-ons.
+- **deevnet-image-factory** – Builds reproducible images for VMs, PCs and single-board computers, using Packer and Ansible, with optional Terraform glue.
 
 ### **Samples & Documentation**
 - **infra-sample** – Demonstrates end-to-end module usage with example values.  
@@ -73,7 +73,7 @@ The Deevnet platform is more than infrastructure—it is a foundation for person
 
 ## 🔒 Private Repositories
 
-- **infra-dvnt** – Full IaC definition for the production environment.  
+- **infra-dvnt** – Full IaC definition for the at home production environment.  
 - **infra-dvntm** – Full IaC definition for the mobile development environment.
 
 Both environments use **Vault** for secret management and **MinIO** for S3-compatible Terraform state storage.

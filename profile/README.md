@@ -45,7 +45,7 @@ Together, these environments form a complete platform for infrastructure enginee
 
 | Repository | Description |
 |------------|-------------|
-| **deevnet-image-factory** | Builds reproducible images for Raspberry Pi and Proxmox VMs using Packer |
+| **deevnet-image-factory** | Builds reproducible OS images using Packer (e.g., Raspberry Pi, Proxmox VM templates) |
 
 ### Ansible Inventory
 
@@ -57,8 +57,8 @@ Together, these environments form a complete platform for infrastructure enginee
 
 | Repository | Description |
 |------------|-------------|
-| **ansible-collection-deevnet.builder** | Workstation setup, artifact servers (nginx), PXE boot servers, Omada controller, base system roles |
-| **ansible-collection-deevnet.net** | Network automation for OPNsense, DNS, interfaces, VLANs |
+| **ansible-collection-deevnet.builder** | Workstation setup, artifact servers (nginx), PXE boot servers, base system roles |
+| **ansible-collection-deevnet.net** | Network automation — DNS, interfaces, VLANs, firewall configuration |
 | **ansible-collection-deevnet.mgmt** | Centralized management services — logging, alerting, telemetry, secrets management, provisioning |
 
 ### Documentation

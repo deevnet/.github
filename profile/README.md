@@ -41,13 +41,11 @@ Together, these environments form a complete platform for infrastructure enginee
 
 ## Public Repositories
 
-### Ansible Collections
+### Image Factory
 
 | Repository | Description |
 |------------|-------------|
-| **ansible-collection-deevnet.builder** | Workstation setup, artifact servers (nginx), PXE boot servers, Omada controller, base system roles |
-| **ansible-collection-deevnet.mgmt** | Centralized management services — logging, alerting, telemetry, secrets management, provisioning |
-| **ansible-collection-deevnet.net** | Network automation for OPNsense, DNS, interfaces, VLANs |
+| **deevnet-image-factory** | Builds reproducible images for Raspberry Pi and Proxmox VMs using Packer |
 
 ### Ansible Inventory
 
@@ -55,11 +53,13 @@ Together, these environments form a complete platform for infrastructure enginee
 |------------|-------------|
 | **ansible-inventory-deevnet** | Central inventory for platform infrastructure — contains `dvntm/` and `dvnt/` directories for each environment. Tenant applications maintain their own inventories to avoid tight coupling. |
 
-### Image Factory
+### Ansible Collections
 
 | Repository | Description |
 |------------|-------------|
-| **deevnet-image-factory** | Builds reproducible images for Raspberry Pi and Proxmox VMs using Packer |
+| **ansible-collection-deevnet.builder** | Workstation setup, artifact servers (nginx), PXE boot servers, Omada controller, base system roles |
+| **ansible-collection-deevnet.net** | Network automation for OPNsense, DNS, interfaces, VLANs |
+| **ansible-collection-deevnet.mgmt** | Centralized management services — logging, alerting, telemetry, secrets management, provisioning |
 
 ### Documentation
 

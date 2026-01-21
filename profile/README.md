@@ -33,6 +33,12 @@ Together, these environments form a complete platform for infrastructure enginee
 
 ---
 
+## Documentation
+
+**[Deevnet Infrastructure Platform Documentation](https://deevnet.github.io/deevnet-docs/)** — Authoritative standards, architecture, and policies for the Deevnet ecosystem.
+
+---
+
 ## Public Repositories
 
 ### Ansible Collections
@@ -40,8 +46,14 @@ Together, these environments form a complete platform for infrastructure enginee
 | Repository | Description |
 |------------|-------------|
 | **ansible-collection-deevnet.builder** | Workstation setup, artifact servers (nginx), PXE boot servers, Omada controller, base system roles |
+| **ansible-collection-deevnet.mgmt** | Centralized management services — logging, alerting, telemetry, secrets management, provisioning |
 | **ansible-collection-deevnet.net** | Network automation for OPNsense, DNS, interfaces, VLANs |
 
+### Ansible Inventory
+
+| Repository | Description |
+|------------|-------------|
+| **ansible-inventory-deevnet** | Central inventory for platform infrastructure — contains `dvntm/` and `dvnt/` directories for each environment. Tenant applications maintain their own inventories to avoid tight coupling. |
 
 ### Image Factory
 
@@ -55,27 +67,11 @@ Together, these environments form a complete platform for infrastructure enginee
 |------------|-------------|
 | **deevnet-terraform** | Terraform modules for infrastructure provisioning |
 
-Planned modules:
-- `modules/proxmox-vm` — Declarative VM lifecycle (cloud-init, VLANs, tags)
-- `modules/opnsense` — Firewall automation (interfaces, VLANs, DHCP, NAT, rules)
-- `modules/omada` — TP-Link Omada configuration (SSIDs, networks, VLANs, switch profiles)
-- `modules/dns` — DNS zone and record management
-
 ### Documentation
 
 | Repository | Description |
 |------------|-------------|
-| **deevnet-docs** | Authoritative documentation site — standards, architecture, and policies that apply across all repositories |
-
----
-
-## Private Repositories
-
-### Ansible Inventory
-
-| Repository | Description |
-|------------|-------------|
-| **ansible-inventory-deevnet** | Central inventory for platform infrastructure — contains `dvntm/` and `dvnt/` directories for each environment. Tenant applications maintain their own inventories to avoid tight coupling. |
+| **[deevnet-docs](https://deevnet.github.io/deevnet-docs/)** | Authoritative documentation site — standards, architecture, and policies that apply across all repositories |
 
 ---
 

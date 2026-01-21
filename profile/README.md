@@ -61,12 +61,6 @@ Together, these environments form a complete platform for infrastructure enginee
 |------------|-------------|
 | **deevnet-image-factory** | Builds reproducible images for Raspberry Pi and Proxmox VMs using Packer |
 
-### Terraform Modules
-
-| Repository | Description |
-|------------|-------------|
-| **deevnet-terraform** | Terraform modules for infrastructure provisioning |
-
 ### Documentation
 
 | Repository | Description |
@@ -81,7 +75,7 @@ Together, these environments form a complete platform for infrastructure enginee
 |------------|---------|
 | Ansible | Infrastructure provisioning via collections and roles |
 | Packer | OS image builds (Raspberry Pi, Proxmox templates) |
-| Terraform | Declarative infrastructure provisioning |
+| Terraform | Tenant provisioning (VMs, networks, applications) |
 | Fedora/RHEL | Primary OS platform (dnf-based, SELinux enabled) |
 | Proxmox VE | Virtualization platform |
 | Podman | Container runtime (systemd-managed) |

@@ -1,0 +1,11 @@
+# Deevnet secret scan: gitleaks' default rules, plus one for this site's own slip.
+[extend]
+useDefault = true
+
+# A vault.yml is ansible-vault ciphertext: a $ANSIBLE_VAULT header, then hex.
+# Any "key: value" line in one means it was committed decrypted.
+[[rules]]
+id = "unencrypted-ansible-vault"
+description = "vault.yml committed without ansible-vault encryption"
+path = '''(^|/)vault\.yml$'''
+regex = '''(?m)^[A-Za-z_][A-Za-z0-9_]*:[ \t]*\S.*$'''
